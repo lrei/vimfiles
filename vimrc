@@ -56,6 +56,8 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'terryma/vim-multiple-cursors'
 " Highlights trailing whitespaces and removes with :StripWhitespace
 Plugin 'ntpeters/vim-better-whitespace'
+" Align on symbols such as = or :
+Plugin 'junegunn/vim-easy-align'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Control and Filesystem Plugins
@@ -76,27 +78,42 @@ Plugin 'airblade/vim-gitgutter'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntax and Language Specific Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax Checking
+" - Syntax
+" Syntastic is a syntax checking plugin
 Plugin 'scrooloose/syntastic'
-" Support for latex
-Plugin 'lervag/vimtex'
+"Automaticallyt format code using external code formaters (e.g. astyle)
+Plugin 'Chiel92/vim-autoformat'
 "YouCompleteMe is a code completion engine
 "Plugin 'Valloric/YouCompleteMe'
 " Toggle the display of the quickfix list and the location-list
 "Plugin 'Valloric/ListToggle'
-"
+
+
+" - Lua
 " Support for lua
 Plugin 'xolox/vim-lua-ftplugin'
+
+" - Latex
+" Support for latex
+Plugin 'lervag/vimtex'
+
+" - Javascript
+" javascript syntax highlighting
+Plugin 'pangloss/vim-javascript'
+" javascript code analysis
+" Plugin 'ternjs/tern_for_vim'
+
+" - Python
 " A python plugin
 "Plugin 'klen/python-mode'
 
-"Clojure
+" - Clojure
 "Plugin 'tpope/vim-fireplace.git'
 "Plugin 'guns/vim-clojure-static'
 "Plugin 'vim-clojure-highlight'
 "Plugin 'kien/rainbow_parantheses'
 
-"go
+" - go
 "Plugin 'fatih/vim-go'
 
 " ------------
@@ -264,7 +281,7 @@ set tabstop=4                   " make tab 4 spaces wide
 set shiftwidth=4                " an indent is 4 spaces
 set softtabstop=4
 
-"Activate Wrap/Linebreak for text editing (non-code)
+" Activate Wrap/Linebreak for text editing (non-code)
 command! -nargs=* Wrap set wrap linebreak nolist tw=80
 
 " - Highlight Trailing whitespaces
@@ -274,6 +291,13 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" - EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vipea)
+xmap ea <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. eaip)
+nmap ea <Plug>(EasyAlign)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -436,8 +460,6 @@ set statusline+=)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufWritePre *.py :%s/\s\+$//e  " remove trailing whitespaces
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -521,6 +543,8 @@ let g:syntastic_python_flake8_quiet_messages = { "regex": "F821" }
 let g:syntastic_python_checkers = ['flake8']
 "let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
+autocmd BufWritePre *.py :%s/\s\+$//e  " remove trailing whitespaces
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Lua
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -530,11 +554,23 @@ autocmd FileType lua setlocal shiftwidth=2 tabstop=2
 " - Syntastic lua
 let g:syntastic_lua_checkers = ["luacheck --no-global"]
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Javascript
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+let g:syntastic_javascript_checkers = ['standard', 'jshint']
+" automatic standard format on save
+autocmd bufwritepost *.js silent !standard-format -w %
+set autoread
+
+autocmd BufWritePre *.js :%s/\s\+$//e  " remove trailing whitespaces
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown options
-autocmd FileType *.nd setl tw=120 lbr wrap
+"autocmd FileType *.md setl tw=120 lbr wrap
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Clojure
