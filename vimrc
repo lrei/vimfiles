@@ -241,10 +241,10 @@ if has('gui_running')
 	set background=dark
 	" Set Theme
 	colorscheme solarized
+	let g:solarized_contrast="high"
 	"colorscheme codeschool
 	"colorscheme intothedark
 	"colorscheme zenburn
-	"let g:solarized_contrast="high"
 	" set horizontal size
 	set columns=80 " horizontal window size
 else
@@ -259,7 +259,7 @@ endif
 set anti enc=utf-8
 
 if (system('uname') =~ "darwin")
-    set gfn=Menlo:h16
+    set gfn=Menlo:h14 "  14 is the highest size that allows for vsplit on mbr
     "set gfn=Inconsolata:h18
     "set gfn=Source\ Code\ Pro:h15 
     "set gfn=Source\ Code\ Pro\ Light:h15
