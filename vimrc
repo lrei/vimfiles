@@ -38,6 +38,16 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'altercation/vim-colors-solarized'
 " Badwolf theme
 Plugin 'sjl/badwolf'
+" Rail Casts theme
+Plugin 'jpo/vim-railscasts-theme'
+" Vivid Chalk theme
+Plugin 'tpope/vim-vividchalk'
+" Hybrid theme
+Plugin 'w0ng/vim-hybrid'
+" gruvbox theme
+Plugin 'morhetz/gruvbox'
+" Dracula
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text Editing Plugins
@@ -230,9 +240,10 @@ if has('gui_running')
 	" Use Dark Background
 	set background=dark
 	" Set Theme
-	colorscheme intothedark
+	colorscheme solarized
+	"colorscheme codeschool
+	"colorscheme intothedark
 	"colorscheme zenburn
-	"colorscheme solarized
 	"let g:solarized_contrast="high"
 	" set horizontal size
 	set columns=80 " horizontal window size
@@ -248,10 +259,12 @@ endif
 set anti enc=utf-8
 
 if (system('uname') =~ "darwin")
-    "set gfn=Menlo:h14 " Set Font to Menlo and size to 14
-    set gfn=Source\ Code\ Pro:h14 " Set Font to SCP and size to 14 (MacVim?)
+    set gfn=Menlo:h16
+    "set gfn=Inconsolata:h18
+    "set gfn=Source\ Code\ Pro:h15 
+    "set gfn=Source\ Code\ Pro\ Light:h15
 else
-    set gfn=Source\ Code\ Pro\ 12 " Set Font to SCP and size to 12
+    set gfn=Source\ Code\ Pro\ 14 " Set Font to SCP and size to 14
     "set gfn=Inconsolata\ Medium \14 " Set Font to Inconsolata and size to 14
 endif
 
@@ -535,6 +548,9 @@ au FileType go setlocal noexpandtab " use tabs
 let g:syntastic_c_checkers=['gcc', 'make']
 "let g:syntastic_c_include_dirs = ['/usr/local/opt/openblas/include', '/usr/local/Cellar/gcc/5.2.0/lib/gcc/5/gcc/x86_64-apple-darwin14.0.0/5.1.0/include/']
 
+autocmd BufWritePre *.c :%s/\s\+$//e  " remove trailing whitespaces
+autocmd BufWritePre *.h :%s/\s\+$//e  " remove trailing whitespaces
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -559,7 +575,7 @@ let g:syntastic_lua_checkers = ["luacheck --no-global"]
 " => Javascript
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-let g:syntastic_javascript_checkers = ['standard', 'jshint']
+let g:syntastic_javascript_checkers = ['standard', 'eslint']
 " automatic standard format on save
 autocmd bufwritepost *.js silent !standard-format -w %
 set autoread
