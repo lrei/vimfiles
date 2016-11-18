@@ -76,9 +76,7 @@ Plugin 'glts/vim-textobj-comment'      " Comment Object
 Plugin 'beloglazov/vim-textobj-quotes' " Quotes object
 Plugin 'reedes/vim-textobj-sentence'   " Sentence object
 Plugin 'kana/vim-textobj-line'         " Line object
-
-" Sneak is a  motion to reach any location specified by two characters
-Plugin 'justinmk/vim-sneak'
+Plugin 'bps/vim-textobj-python'        " Python functions and classes
 
 " smooth scrolling
 Plugin 'terryma/vim-smooth-scroll'
@@ -133,6 +131,10 @@ Plugin 'AndrewRadev/splitjoin.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search: Code Search, File Search, ...
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sneak is a  motion to reach any location specified by two characters
+" but works kind of like a mini-search/jump for 2 char combinations
+Plugin 'justinmk/vim-sneak'
+
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plugin 'ctrlpvim/ctrlp.vim'
 
@@ -220,6 +222,9 @@ Plugin 'tmhedberg/SimpylFold'
 
 " Better autocompletion
 Plugin 'davidhalter/jedi-vim'
+
+" YAPF
+Plugin 'mindriot101/vim-yapf'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Javascript

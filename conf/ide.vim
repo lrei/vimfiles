@@ -98,11 +98,17 @@ let g:syntastic_enable_signs = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YouCompleteMe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Paths are relative to vim work dir
+let g:ycm_filepath_completion_use_working_dir = 1
+
+" Map the GoTo command
+nnoremap <leader>j :YcmCompleter GoTo<CR>
+
 " Disable automatic popup of completion window
 "let g:ycm_min_num_of_chars_for_completion = 99 " This disables the popup
 "let g:ycm_key_invoke_completion = '<Tab>'
 
-" use jedi vim for completions on python code
+" use or not jedi vim for completions on python code
 let g:jedi#completions_enabled = 0
 
 " this option turns on YCM's diagnostic display features.
@@ -154,12 +160,17 @@ nnoremap <Leader>sv :FSSplitLeft<cr>
 " => Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " - Syntastic Python
-let g:syntastic_python_flake8_quiet_messages = { "regex": "F821" }
+"let g:syntastic_python_flake8_quiet_messages = { "regex": "F821" }
+" pylint R0913 = too many arguments
+let g:syntastic_python_quiet_messages = { "regex": "R0913" }
 let g:syntastic_python_checkers = ['prospector']
 "let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
+" - YAPF
+let g:yapf_style = "pep8"
+:nnoremap <leader>fp :Yapf<cr>
 " autoformat on save with yapf
-autocmd BufWritePost *.py silent ! yapf -i --style=pep8; %
+autocmd BufWritePost *.py :call Yapf()
 
 " jedi
 "let g:jedi#goto_command = "<leader>d"

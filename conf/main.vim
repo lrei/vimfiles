@@ -4,7 +4,7 @@
 filetype plugin indent on
 
 " Sets how many lines of history VIM has to remember
-set history=1000
+set history=2000
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -19,14 +19,17 @@ let g:mapleader = "\<Space>"
 let localleader = ","
 let g:localleader = ","
 
-" Quick Edit & Reload of vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+" Use Mouse
+set mouse=a
 
 " We are never on a slow connection:
 set ttyfast
 set ttymouse=xterm2
 set ttyscroll=3
+
+" Quick Edit & Reload of vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Fix Mac(Vim) use of the Modifier key Alt/Option
 if has("gui_macvim")

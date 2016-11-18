@@ -39,8 +39,16 @@ if has('gui_running')
     " set horizontal size
     set columns=90 " horizontal window size
 else
-    " Use Zenburn
+    set columns=80
+    set t_Co=256
+    " Use Zenburn by default
     colorscheme zenburn
+
+    " If we switch to solarized in the term it will be broken,
+    " this makes it 'usable'
+    let g:solarized_termcolors=256
+    let g:solarized_visibility="high"
+    let g:solarized_contrast="high"
 endif
 
 " - Font Options
@@ -115,13 +123,19 @@ let g:thematic#themes = {
 \ 'solar'      : {'colorscheme': 'solarized',
 \                 'background': 'dark',
 \                 'airline-theme': 'solarized',
-\                 'typeface': 'Menlo',
-\                 'font-size': 15,
 \                },
+\ 'codeschool' : {'colorscheme': 'codeschool',
+\                 'background': 'dark',
+\                 'airline-theme': 'solarized',
+\                },
+\ 'spacegray' : {'colorscheme': 'spacegray',
+\                 'background': 'dark',
+\                 'airline-theme': 'solarized',
+\                },
+\
 \ 'solar_light': {'colorscheme': 'solarized',
 \                 'background': 'light',
 \                 'airline-theme': 'solarized',
-\                 'typeface': 'Menlo',
 \                 'font-size': 15,
 \                },
 \
@@ -213,7 +227,7 @@ let g:thematic#theme_name = 'intothedark'
 
 
 " Set Theme Based on Language
-autocmd FileType python :Thematic solar
+autocmd FileType python :Thematic molokai
 autocmd FileType javascript :Thematic hybrid
 autocmd FileType go :Thematic tnb
 autocmd FileType clojure :Thematic dracula
