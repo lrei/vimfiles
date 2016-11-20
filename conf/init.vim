@@ -354,6 +354,3 @@ call vundle#end()            " required
 "See: https://github.com/powerline/fonts
 
 "###################################### VIM ###################################
-
-
-

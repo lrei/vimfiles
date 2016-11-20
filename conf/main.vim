@@ -27,6 +27,14 @@ set ttyfast
 set ttymouse=xterm2
 set ttyscroll=3
 
+" Timeout on maps and keycodes
+set timeout
+set ttimeout
+" Time out lengths
+set timeoutlen=100
+set ttimeoutlen=0
+
+
 " Quick Edit & Reload of vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -41,7 +49,6 @@ endif
 " https://github.com/guns/vim-sexp/issues/18#issuecomment-150748213
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Timeout quickly on key codes to differentiate from normal <Esc>
-set ttimeout ttimeoutlen=0
 
 " Special named keys that cause problems when used literally
 let namedkeys = { ' ': 'Space', '\': 'Bslash', '|': 'Bar', '<': 'lt' }

@@ -23,7 +23,6 @@ if executable('ag')
 endif
 
 " Map leader-a to Ack
-"nmap <leader>a :Ack<space>
 nmap <leader>a :Ack<space>
 
 

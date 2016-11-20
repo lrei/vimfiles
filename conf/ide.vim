@@ -96,8 +96,11 @@ let g:syntastic_enable_signs = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => YouCompleteMe
+" => YouCompleteMe / autoclose
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fix autclose issues
+let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
+
 " Paths are relative to vim work dir
 let g:ycm_filepath_completion_use_working_dir = 1
 
