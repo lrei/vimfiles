@@ -17,6 +17,9 @@ set showbreak=>\    " show break indicator if soft wrapping in on
 "set lazyredraw      " dont auto redraw after macros
 syntax on           " Activate syntax highlighting
 
+" Force Redraw in case something messed with the screen
+nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
+
 
 "set visualbell " disable the beep
 "set noerrorbells

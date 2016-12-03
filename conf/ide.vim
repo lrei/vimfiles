@@ -47,6 +47,9 @@ let g:nerdtree_tabs_open_on_new_tab = 0
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
 
+" Align line-wise comment delimiters flush left instead of following code
+" indentation: otherwise it looks weird when commenting big chunks
+let g:NERDDefaultAlign = 'left'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Tagbar
@@ -87,17 +90,26 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-" check files on open ?
-let g:syntastic_check_on_open = 1
-" check files on wq?
+" check files on open ? No, it slows down stuff
+let g:syntastic_check_on_open = 0
+" check files on wq? No - only on 'w'
 let g:syntastic_check_on_wq = 0
-" disable signs -> these can be slow
-let g:syntastic_enable_signs = 0
+" enable/disable signs -> these can be slow
+let g:syntastic_enable_signs = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YouCompleteMe / autoclose
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" complete in comments
+let g:ycm_complete_in_comments = 1 
+
+" use language keywords in completion
+let g:ycm_seed_identifiers_with_syntax = 1 
+
+" collect from comments and strings
+let g:ycm_collect_identifiers_from_comments_and_strings = 1 
+
 " Fix autclose issues
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 
@@ -122,12 +134,13 @@ let g:Show_diagnostics_ui = 1 "default 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UtilSnips
+" => UltiSnips or UtilSnips as I like to call it
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsListSnippets = "<c-m-s>"
-let g:UltiSnipsJumpForwardTrigger = "<right>"
-let g:UltiSnipsJumpBackwardTrigger = "<left>"
+let g:UltiSnipsExpandTrigger="<c-a>"
+let g:UltiSnipsJumpForwardTrigger = ""
+let g:UltiSnipsJumpBackwardTrigger = ""
+let g:UltiSnipsListSnippets = "<F3>"
+let g:UltiSnipsEditSplit="vertical"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,14 +179,14 @@ nnoremap <Leader>sv :FSSplitLeft<cr>
 "let g:syntastic_python_flake8_quiet_messages = { "regex": "F821" }
 " pylint R0913 = too many arguments
 let g:syntastic_python_quiet_messages = { "regex": "R0913" }
-let g:syntastic_python_checkers = ['prospector']
+let g:syntastic_python_checkers = ['prospector', 'flake8']
 "let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
-" - YAPF
+" - YAPF (autoformating)
 let g:yapf_style = "pep8"
 :nnoremap <leader>fp :Yapf<cr>
 " autoformat on save with yapf
-autocmd BufWritePost *.py :call Yapf()
+" autocmd BufWritePost *.py :call Yapf()
 
 " jedi
 "let g:jedi#goto_command = "<leader>d"
@@ -225,6 +238,30 @@ au FileType go setlocal noexpandtab tabstop=4 shiftwidth=4" use tabs
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Lua
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indenting by 2 spaces is enough for lua
+autocmd FileType lua setlocal shiftwidth=2 tabstop=2
+
+" - Syntastic lua
+let g:syntastic_lua_checkers = ["luacheck --no-global"]
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Clojure
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:clojure_align_multiline_strings = 1
+let g:clojure_align_subforms = 1
+autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Latex
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_tex_checkers = ['lacheck']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown options
@@ -242,19 +279,4 @@ augroup pencil
 augroup END
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Lua
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Indenting by 2 spaces is enough for lua
-autocmd FileType lua setlocal shiftwidth=2 tabstop=2
 
-" - Syntastic lua
-let g:syntastic_lua_checkers = ["luacheck --no-global"]
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Clojure
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:clojure_align_multiline_strings = 1
-let g:clojure_align_subforms = 1
-autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry

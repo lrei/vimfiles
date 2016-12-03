@@ -31,8 +31,22 @@ nmap <leader>a :Ack<space>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " - WiLd menu
-set wildmode=longest:full	" file name completion
-set wildmenu			" Turn on the WiLd menu
+set wildmode=longest:full   " file name completion
+set wildmenu                " Turn on the WiLd menu
+" Files to ignore by wildignore and ctrlp:
+" Ignore compiled files, git, ...
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.orig                           " Merge resolution files
+set wildignore+=classes,lib                      " Clojure/Leiningen
 
 " - CtrlP configuration
 " top to bottom ordering
@@ -45,9 +59,7 @@ if executable('ag')
     let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 endif
 
-" Files to ignore by wildignore and ctrlp:
-" Ignore compiled files, git, ...
-set wildignore=*.o,*~,*.pyc,*.so,\.git
+
 " ignore .gitignore files in ctrlp
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 

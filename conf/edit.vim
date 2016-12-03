@@ -120,9 +120,11 @@ nmap ea <Plug>(EasyAlign)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " - YankRing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
+" YR should not monitor clipboard 
+let g:yankring_clipboard_monitor=0
+
 " YankRing shortcut
-nnoremap <leader>r :YRShow<CR>
+nnoremap <leader>x :YRShow<CR>
 
 " YankRing window size
 let g:yankring_window_height = 14
@@ -132,6 +134,7 @@ let g:yankring_history_dir='~/.vim/_yr'
 
 " this is so that single char deletes don't end up in the yankring
 let g:yankring_min_element_length = 2
+
 
 " this makes Y yank from the cursor to the end of the line, which makes more
 " sense than the default of yanking the whole current line (we can use yy for

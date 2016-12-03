@@ -19,6 +19,9 @@ let g:mapleader = "\<Space>"
 let localleader = ","
 let g:localleader = ","
 
+" ffs save
+nnoremap s :w<cr>
+
 " Use Mouse
 set mouse=a
 
@@ -33,11 +36,6 @@ set ttimeout
 " Time out lengths
 set timeoutlen=1000
 set ttimeoutlen=0
-
-
-" Quick Edit & Reload of vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Fix Mac(Vim) use of the Modifier key Alt/Option
 if has("gui_macvim")

@@ -74,6 +74,7 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'kana/vim-textobj-user'
 Plugin 'glts/vim-textobj-comment'      " Comment Object
 Plugin 'beloglazov/vim-textobj-quotes' " Quotes object
+Plugin 'reedes/vim-textobj-quote'      " Typographic quotes etc
 Plugin 'reedes/vim-textobj-sentence'   " Sentence object
 Plugin 'kana/vim-textobj-line'         " Line object
 Plugin 'bps/vim-textobj-python'        " Python functions and classes
@@ -179,10 +180,10 @@ Plugin 'xolox/vim-easytags'
 
 " UtilSnips Engine
 " Requires sys python === vim compile python
-" Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 
 " UtilSnips snippets
-" Plugin 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 
 " Quickly switch between .h and .c
 Plugin 'derekwyatt/vim-fswitch'
