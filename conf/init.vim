@@ -32,7 +32,7 @@ Plugin 'bling/vim-bufferline'
 " All-time favorites
 " zenburn/intothedark
 
-" Current Favorites 
+" Current Favorites
 Plugin 'jpo/vim-railscasts-theme'           " Railcasts theme
 Plugin 'nanotech/jellybeans.vim'            " jellybeans
 Plugin 'notpratheek/vim-luna'               " luna
@@ -217,6 +217,7 @@ Plugin 'Chiel92/vim-autoformat'
 "YouCompleteMe is a code completion engine
 Plugin 'Valloric/YouCompleteMe'
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -229,8 +230,6 @@ Plugin 'tmhedberg/SimpylFold'
 " Better autocompletion
 Plugin 'davidhalter/jedi-vim'
 
-" YAPF
-Plugin 'mindriot101/vim-yapf'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Javascript

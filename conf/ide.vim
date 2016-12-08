@@ -66,6 +66,30 @@ let g:tagbar_width = 30             " Sidebar width
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => autoformat
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <F6> :Autoformat<CR>
+
+"disable the fallback to vim's indent file
+let g:autoformat_autoindent = 0
+
+let g:formatters_python = ['autopep8','yapf']
+let g:formatters_python = ['yapf']
+let g:formatter_yapf_style = 'pep8'
+
+let g:formatters_javascript = ['standard_javascript']
+
+let g:formatters_c = ['astyle_c']
+"let b:formatdef_custom_c='"astyle --mode=c --suffix=none --options=/home/user/special_project/astylerc"'
+"let b:formatters_c = ['custom_c']
+
+" Call autoformat on write
+au BufWrite *.py :Autoformat
+au BufWrite *.js :Autoformat
+au BufWrite *.c :Autoformat
+au BufWrite *.h :Autoformat
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fugitive
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>gd :Gdiff<cr>
@@ -172,6 +196,10 @@ nnoremap <Leader>sr :call FSwitch('%', 'wincmd r')<cr>
 " Creates a new window on the left and opens the companion file in it
 nnoremap <Leader>sv :FSSplitLeft<cr>
 
+" Autoformat with astyle
+"autocmd BufNewFile,BufRead *.c set formatprg=astyle
+"autocmd BufNewFile,BufRead *.h set formatprg=astyle
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python
@@ -183,11 +211,6 @@ let g:syntastic_python_quiet_messages = { "regex": "R0913" }
 let g:syntastic_python_checkers = ['prospector', 'flake8']
 "let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
-" - YAPF (autoformating)
-let g:yapf_style = "pep8"
-autocmd FileType python nnoremap <F6> :Yapf<cr>
-" autoformat on save with yapf
-" autocmd BufWritePost *.py :call Yapf()
 
 " jedi
 "let g:jedi#goto_command = "<leader>d"
