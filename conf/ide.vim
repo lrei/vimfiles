@@ -29,10 +29,11 @@ nnoremap <CR> za        " open close folds with ENTER key
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NerdTree
-" what gets executed exery space 
+" what gets executed exery space
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Map NERDTree
-map <Leader>n :NERDTreeToggle<CR>
+"map <Leader>n :NERDTreeToggle<CR>
+map <F2> :NERDTreeToggle<CR>
 
 let g:NERDTreeWinSize = 40
 let g:NERDTreeMinimalUI=1
@@ -55,7 +56,7 @@ let g:NERDDefaultAlign = 'left'
 " => Tagbar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set the shortcut
-nmap <Leader>T :TagbarToggle<CR>
+nmap <F3> :TagbarToggle<CR>
 
 " Ctags location
 "let g:tagbar_ctags_bin='/usr/local/bin/ctags'
@@ -102,13 +103,13 @@ let g:syntastic_enable_signs = 1
 " => YouCompleteMe / autoclose
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " complete in comments
-let g:ycm_complete_in_comments = 1 
+let g:ycm_complete_in_comments = 1
 
 " use language keywords in completion
-let g:ycm_seed_identifiers_with_syntax = 1 
+let g:ycm_seed_identifiers_with_syntax = 1
 
 " collect from comments and strings
-let g:ycm_collect_identifiers_from_comments_and_strings = 1 
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
 " Fix autclose issues
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
@@ -139,7 +140,7 @@ let g:Show_diagnostics_ui = 1 "default 1
 let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsJumpForwardTrigger = ""
 let g:UltiSnipsJumpBackwardTrigger = ""
-let g:UltiSnipsListSnippets = "<F3>"
+let g:UltiSnipsListSnippets = "<F4>"
 let g:UltiSnipsEditSplit="vertical"
 
 
@@ -184,7 +185,7 @@ let g:syntastic_python_checkers = ['prospector', 'flake8']
 
 " - YAPF (autoformating)
 let g:yapf_style = "pep8"
-:nnoremap <leader>fp :Yapf<cr>
+autocmd FileType python nnoremap <F6> :Yapf<cr>
 " autoformat on save with yapf
 " autocmd BufWritePost *.py :call Yapf()
 
@@ -207,7 +208,8 @@ let g:syntastic_javascript_checkers = ['standard', 'eslint']
 autocmd bufwritepost *.js silent !standard-format -w %
 set autoread
 
-autocmd BufWritePre *.js :%s/\s\+$//e  " remove trailing whitespaces
+" this is enabled globally:
+"autocmd BufWritePre *.js :%s/\s\+$//e  " remove trailing whitespaces
 
 " => Jade
 " autocmd *.jade: setlocal shiftwidth=2 tabstop=2
@@ -266,7 +268,8 @@ let g:syntastic_tex_checkers = ['lacheck']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown options
 "autocmd FileType *.md setl tw=120 lbr wrap
-"
+let g:syntastic_javascript_checkers = ['mdl']
+
 let g:vim_markdown_frontmatter=1
 
 augroup pencil

@@ -14,7 +14,8 @@ set sidescroll=1    " Incremental (horizontal) sidescroll
 set sidescrolloff=7 " Show # chars to the side of the cursor when scrolling
 set number          " show line numbers
 set showbreak=>\    " show break indicator if soft wrapping in on
-"set lazyredraw      " dont auto redraw after macros
+set termguicolors   " truecolor (tc) instead of set t_Co=256
+"set lazyredraw     " dont auto redraw after macros
 syntax on           " Activate syntax highlighting
 
 " Force Redraw in case something messed with the screen
@@ -29,30 +30,21 @@ nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Default Colorschemes and fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use Dark Background
+set background=dark
 
-" - Theme Options
 if has('gui_running')
     set guioptions=egmrt " hide toolbar
-    " Use Dark Background
-    set background=dark
-    " Set Theme
-    colorscheme solarized
-    let g:solarized_contrast="high"
-    let g:airline_theme='solarized'
-    " set horizontal size
-    set columns=90 " horizontal window size
-else
-    set columns=80
-    set t_Co=256
-    " Use Zenburn by default
-    colorscheme zenburn
-
-    " If we switch to solarized in the term it will be broken,
-    " this makes it 'usable'
-    let g:solarized_termcolors=256
-    let g:solarized_visibility="high"
-    let g:solarized_contrast="high"
 endif
+
+" set horizontal size
+set columns=80 " horizontal window size
+let g:airline_theme='jellybeans'
+
+" Theme
+colorscheme jellybeans
+"colorscheme zenburn
+"colorscheme railscasts
 
 " - Font Options
 set anti enc=utf-8
@@ -106,140 +98,3 @@ set statusline+=%{strlen(&fenc)?&fenc:&enc}   " Encoding (utf-8).
 set statusline+=/
 set statusline+=%{&ft}                        " Type (python).
 set statusline+=)
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Thematic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" :Thematic {theme_name}
-" we need to set maxhorz to 0 otherwise thematic overrides the current size of
-" the vim window
-let g:thematic#defaults = {
-\ 'airline-theme': 'solarized',
-\ 'background': 'dark',
-\ 'typeface': 'Source Code Pro for Powerline',
-\ 'font-size': 15,
-\ 'maxhorz': 0,
-\ }
-
-let g:thematic#themes = {
-\ 'solar'      : {'colorscheme': 'solarized',
-\                 'background': 'dark',
-\                 'airline-theme': 'solarized',
-\                },
-\ 'codeschool' : {'colorscheme': 'codeschool',
-\                 'background': 'dark',
-\                 'airline-theme': 'solarized',
-\                },
-\ 'spacegray' : {'colorscheme': 'spacegray',
-\                 'background': 'dark',
-\                 'airline-theme': 'solarized',
-\                },
-\
-\ 'solar_light': {'colorscheme': 'solarized',
-\                 'background': 'light',
-\                 'airline-theme': 'solarized',
-\                 'font-size': 15,
-\                },
-\
-\ 'zenburn':     {'colorscheme': 'zenburn',
-\                 'airline-theme': 'wombat',
-\                 'typeface': 'Menlo',
-\                },
-\ 'intothedark': {'colorscheme': 'intothedark',
-\                 'airline-theme': 'jellybeans',
-\                 'typeface': 'Source Code Pro for Powerline',
-\                },
-\
-\ 'rails':       {'colorscheme': 'railscasts',
-\                 'airline-theme': 'luna',
-\                 'background': 'dark',
-\                 'typeface': 'Hack',
-\                },
-\
-\ 'jellybeans':  {'colorscheme': 'jellybeans',
-\                 'airline-theme': 'jellybeans',
-\                 'typeface': 'Inconsolata for Powerline',
-\                 'font-size': 16,
-\                },
-\
-\ 'dracula':     {'colorscheme': 'dracula',
-\                 'airline-theme': 'luna',
-\                 'typeface': 'Hack',
-\                 'font-size': 15,
-\                 'background': 'dark',
-\                },
-\
-\ 'hybrid':      {'colorscheme': 'hybrid',
-\                'background': 'dark',
-\                'airline-theme': 'base16',
-\                'typeface': 'Source Code Pro for Powerline',
-\                'font-size': 15,
-\                },
-\
-\ 'molokai':    {'colorscheme': 'molokai',
-\                'background': 'dark',
-\                'airline-theme': 'molokai',
-\                'typeface': 'Hack',
-\                'font-size': 14,
-\                },
-\
-\ 'tnb':         {'colorscheme': 'Tomorrow-Night-Bright',
-\                'background': 'dark',
-\                'airline-theme': 'molokai',
-\                'typeface': 'Incosolata for Powerline',
-\                'font-size': 15,
-\                },
-\
-\ 'data':       {'colorscheme': 'spacegray',
-\                'background': 'dark',
-\                'airline-theme': 'luna',
-\                'typeface': 'Roboto Mono Medium for Powerline',
-\                'font-size': 13,
-\                },
-\ 'pencil_dark' :{'colorscheme': 'pencil',
-\                 'background': 'dark',
-\                 'airline-theme': 'bubblegum',
-\                 'typeface': 'Cousine for Powerline',
-\                 'font-size': 20,
-\                 'laststatus': 0,
-\                 'linespace': 8,
-\                },
-\ 'pencil_lite' :{'colorscheme': 'pencil',
-\                 'background': 'light',
-\                 'airline-theme': 'light',
-\                 'typeface': 'Cousine for Powerline',
-\                 'font-size': 20,
-\                 'laststatus': 0,
-\                 'linespace': 8,
-\                },
-\
-\ 'goyo'        :{'colorscheme': 'seoul256',
-\                 'background': 'dark',
-\                 'airline-theme': '',
-\                 'typeface': 'Cousine for Powerline',
-\                 'columns': 75,
-\                 'font-size': 20,
-\                 'laststatus': 0,
-\                 'linespace': 8,
-\                 'fullscreen': 1,
-\                },
-\ }
-
-let g:thematic#theme_name = 'intothedark'
-
-
-" Set Theme Based on Language
-autocmd FileType python :Thematic molokai
-autocmd FileType javascript :Thematic hybrid
-autocmd FileType go :Thematic tnb
-autocmd FileType clojure :Thematic dracula
-autocmd BufNewFile,BufRead *.h,*.c :Thematic jellybeans
-autocmd BufNewFile,BufRead *.vim :Thematic zenburn
-autocmd BufNewFile,BufRead *.csv,json :Thematic data
-
-" the non-thematic way to do it would be:
-" autocmd FileType python colorscheme solarized
-"    \ | set gfn=Menlo:h15
-"    \ | let g:airline_theme='solarized'
-" but it's unnecessary

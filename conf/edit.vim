@@ -44,8 +44,9 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 "autocmd BufWinLeave * call clearmatches()
 
 " Delete extra whitespaces on save
-" I prefer to enable this on a per file-extension basis
-"autocmd BufWritePre * :%s/\s\+$//e
+" Maybe it would be better to enable this on a per file-extension basis
+" but it's boring and i'm lazy
+autocmd BufWritePre * :%s/\s\+$//e
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

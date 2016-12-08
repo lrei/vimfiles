@@ -25,32 +25,37 @@ Plugin 'vim-airline/vim-airline-themes'
 " Vim buffers in airline
 Plugin 'bling/vim-bufferline'
 
-" Thematic
-Plugin 'reedes/vim-thematic'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Themes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'altercation/vim-colors-solarized'   " solarized theme as a plugin
-Plugin 'sjl/badwolf'                        " Badwolf theme
+" All-time favorites
+" zenburn/intothedark
+
+" Current Favorites 
 Plugin 'jpo/vim-railscasts-theme'           " Railcasts theme
-Plugin 'tpope/vim-vividchalk'           " Vivid Chalk theme
-Plugin 'w0ng/vim-hybrid'                " Hybrid theme
-Plugin 'morhetz/gruvbox'                " gruvbox theme
-Plugin 'dracula/vim'                    " Dracula
-Plugin 'reedes/vim-colors-pencil'       " Pencil
-Plugin 'nanotech/jellybeans.vim'        " jellybeans
-Plugin 'fatih/molokai'                  " Molokai
-Plugin 'jonathanfilip/vim-lucius'       " Lucius
-Plugin 'wombat256.vim'                      " Wombat
-Plugin 'noahfrederick/vim-hemisu'           " Hemisu
-Plugin 'ujihisa/unite-colorscheme'          " Unite
-Plugin 'lokaltog/vim-distinguished'         " Distinguished
-Plugin 'chriskempson/base16-vim'            " Base16
-Plugin 'ajh17/spacegray.vim'                "Spacegray
-Plugin 'jacoborus/tender'                   " tender
-Plugin 'jeetsukumaran/vim-nefertiti'        " nefertiti
-Plugin 'aliou/moriarty.vim'                 " moriarty
+Plugin 'nanotech/jellybeans.vim'            " jellybeans
+Plugin 'notpratheek/vim-luna'               " luna
+Plugin 'w0ng/vim-hybrid'                    " Hybrid theme
+Plugin 'ajh17/spacegray.vim'                " Spacegray
+
+" Boring but good:
+Plugin 'altercation/vim-colors-solarized'   " solarized theme as a plugin
+Plugin 'jonathanfilip/vim-lucius'           " Lucius
+
+" Uglyish but good:
+Plugin 'morhetz/gruvbox'                    " gruvbox theme
+Plugin 'sjl/badwolf'                        " Badwolf theme
+
+" Unused cool but with brightness issues
+" Plugin 'dracula/vim'                        " Dracula
+" Plugin 'aliou/moriarty.vim'                 " moriarty
+
+" Unused but cool:
+" Plugin 'noahfrederick/vim-hemisu'           " Hemisu
+" Plugin 'reedes/vim-colors-pencil'           " Pencil
+" Plugin 'ujihisa/unite-colorscheme'          " Unite
+" Plugin 'lokaltog/vim-distinguished'         " Distinguished
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Movement Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -106,9 +111,6 @@ Plugin 'terryma/vim-expand-region'
 " autoclose type an '(', an it automatically inserts a ')'
 Plugin 'Townk/vim-autoclose'
 
-" multiple selection a-la sublime text
-Plugin 'terryma/vim-multiple-cursors'
-
 " YankRing allows referencing previously yanked, deleted or changed text
 Plugin 'vim-scripts/YankRing.vim'
 
@@ -127,6 +129,9 @@ Plugin 'sickill/vim-pasta'
 
 " simplifies the transition between multiline and single-line code
 Plugin 'AndrewRadev/splitjoin.vim'
+
+" Displaying of unicode char codes and entering them
+Plugin 'tpope/vim-characterize.git'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
