@@ -8,7 +8,7 @@ set incsearch	" Makes search act like search in modern browsers
 set gdefault    " global search & replace instead of line
 
 " Clear search highlight
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+noremap <ENTER> :noh<cr>:call clearmatches()<cr>
 
 " Disable Vim's default regex, uses normal regex
 "nnoremap / /\v
@@ -83,17 +83,3 @@ xmap t <Plug>Sneak_t
 xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Multiple Cursors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" This Plugin only works fully with GUI Vim
-let g:multi_cursor_use_default_mapping=0
-"let g:multi_cursor_start_key='<C-s>'
-let g:multi_cursor_next_key='<C-s>'
-"let g:multi_cursor_prev_key='<M-a>'
-"let g:multi_cursor_skip_key='<M-x>'
-let g:multi_cursor_quit_key='<Esc>'
-nnoremap <silent> <M-s> :MultipleCursorsFind <C-R>/<CR>
-vnoremap <silent> <M-s> :MultipleCursorsFind <C-R>/<CR>

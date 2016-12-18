@@ -1,30 +1,21 @@
 " Configuration for development
-" Plugins aimed at making VIM closer to a typical IDE
+" Plugins aimed at making VIM better for development
 
 set formatoptions-=o " dont continue comments when pushing o/O
 set pumheight=10     " completion window max size
 
+
 let g:rainbow_active = 1 " enable rainbow parenthesis
 
-" External make e.g.
-" :set makeprg=make\ #<.o
-" Show quickfix after :make, taken from
-" http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
-autocmd QuickFixCmdPost [^l]*   nested  cwindow
-autocmd QuickFixCmdPost l*      nested  lwindow
-
-" Allow using <CR> on quickfix entries
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Folding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set foldlevelstart=99   " all folds open by default
-set foldmethod=indent   " fold based on indent level
-set foldnestmax=5       " deepest fold level
-"set foldenable         " enable folding
-set nofoldenable        " dont fold by default
-nnoremap <CR> za        " open close folds with ENTER key
+set foldenable
+set foldlevelstart=99           " all folds open by default
+set foldmethod=syntax           " fold based on syntax highlighting
+set foldnestmax=10              " deepest fold level
+nnoremap <leader><space> za     " open close folds
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -33,7 +24,7 @@ nnoremap <CR> za        " open close folds with ENTER key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Map NERDTree
 "map <Leader>n :NERDTreeToggle<CR>
-map <F2> :NERDTreeToggle<CR>
+map <F1> :NERDTreeToggle<CR>
 
 let g:NERDTreeWinSize = 40
 let g:NERDTreeMinimalUI=1
@@ -56,7 +47,7 @@ let g:NERDDefaultAlign = 'left'
 " => Tagbar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set the shortcut
-nmap <F3> :TagbarToggle<CR>
+nmap <F2> :TagbarToggle<CR>
 
 " Ctags location
 "let g:tagbar_ctags_bin='/usr/local/bin/ctags'
@@ -66,21 +57,57 @@ let g:tagbar_width = 30             " Sidebar width
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Neomake
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd! BufWritePost * Neomake
+let g:neomake_verbose = 3
+let g:neomake_open_list = 2
+let g:neomake_highlight_columns = 0
+let g:neomake_highlight_lines = 0
+let g:neomake_error_sign = {'text': '✗', 'texthl': 'ErrorMsg'}
+let g:warning_sign = {'text': '⚠', 'texthl': 'WarnMsg'}
+
+noremap <F5> :Neomake<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Location List & Quickfix
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F3> :lopen<CR>        " open location window
+nmap <F4> :lclose<CR>       " close location window
+nmap <Leader>jc :ll<CR>     " go to current error/warning
+nmap <Leader>jn :lnext<CR>  " next error/warning
+nmap <Leader>jp :lprev<CR>  " previous error/warning
+
+" Allow using <CR> on quickfix entries
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => UltiSnips or UtilSnips as I like to call it
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsListSnippets = "<F6>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<c-a>"
+let g:UltiSnipsJumpForwardTrigger = ""
+let g:UltiSnipsJumpBackwardTrigger = ""
+let g:UltiSnippetsDir="~/.vim/snips"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap <F6> :Autoformat<CR>
+noremap <F7> :Autoformat<CR>
 
 "disable the fallback to vim's indent file
 let g:autoformat_autoindent = 0
 
-let g:formatters_python = ['autopep8','yapf']
-let g:formatters_python = ['yapf']
-let g:formatter_yapf_style = 'pep8'
+let g:formatters_python = ['autopep8']
+"let g:formatter_yapf_style = 'pep8'
 
 let g:formatters_javascript = ['standard_javascript']
 
 let g:formatters_c = ['astyle_c']
-"let b:formatdef_custom_c='"astyle --mode=c --suffix=none --options=/home/user/special_project/astylerc"'
+"let b:formatdef_custom_c='"astyle --mode=c --suffix=none --options=~/.astylerc"'
 "let b:formatters_c = ['custom_c']
 
 " Call autoformat on write
@@ -103,24 +130,6 @@ nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Git<cr>
 nnoremap <leader>gp :Git push<cr>
-"nnoremap <leader>gh :Git push heroku master<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-" check files on open ? No, it slows down stuff
-let g:syntastic_check_on_open = 0
-" check files on wq? No - only on 'w'
-let g:syntastic_check_on_wq = 0
-" enable/disable signs -> these can be slow
-let g:syntastic_enable_signs = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -142,48 +151,24 @@ let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 let g:ycm_filepath_completion_use_working_dir = 1
 
 " Map the GoTo command
-nnoremap <leader>j :YcmCompleter GoTo<CR>
+nnoremap <leader>jg :YcmCompleter GoTo<CR>
 
 " Disable automatic popup of completion window
 "let g:ycm_min_num_of_chars_for_completion = 99 " This disables the popup
 "let g:ycm_key_invoke_completion = '<Tab>'
 
-" use or not jedi vim for completions on python code
-let g:jedi#completions_enabled = 0
+" this option turns on YCM's diagnostic display features:
+" constantly updating messages  (e.g. errors/warnings) as you type
+let g:Show_diagnostics_ui = 0
+let g:ycm_always_populate_location_list = 0
 
-" this option turns on YCM's diagnostic display features.
-" it also disables syntastic checkers
-let g:Show_diagnostics_ui = 1 "default 1
-
-"nnoremap <F11> :YcmForceCompileAndDiagnostics <CR
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UltiSnips or UtilSnips as I like to call it
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<c-a>"
-let g:UltiSnipsJumpForwardTrigger = ""
-let g:UltiSnipsJumpBackwardTrigger = ""
-let g:UltiSnipsListSnippets = "<F4>"
-let g:UltiSnipsEditSplit="vertical"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => ListToggle
-"Disabled
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"let g:lt_location_list_toggle_map = '<leader>l'
-"let g:lt_quickfix_list_toggle_map = '<leader>q'
+nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => C
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" - Syntastic C
-" Note this can be disabled by YCM
-let g:syntastic_c_checkers=['gcc', 'make']
-"let g:syntastic_c_include_dirs = ['/usr/local/opt/openblas/include']
+let g:neomake_c_enabled_makers=['gcc', 'make']
 
 " - fswitch
 " A "companion" file is a .cpp file to an .h file and vice versa
@@ -204,29 +189,29 @@ nnoremap <Leader>sv :FSSplitLeft<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" - Syntastic Python
-"let g:syntastic_python_flake8_quiet_messages = { "regex": "F821" }
-" pylint R0913 = too many arguments
-let g:syntastic_python_quiet_messages = { "regex": "R0913" }
-let g:syntastic_python_checkers = ['prospector', 'flake8']
-"let g:syntastic_python_python_exec = '/usr/local/bin/python3'
-
+let g:neomake_python_enabled_makers=['pylama']
 
 " jedi
-"let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_command = "<leader>jj"
+let g:jedi#rename_command = "<leader>r"
 "let g:jedi#goto_assignments_command = "<leader>g"
 "let g:jedi#goto_definitions_command = ""
 "let g:jedi#documentation_command = "K"
 "let g:jedi#usages_command = "<leader>n"
 "let g:jedi#completions_command = "<C-Space>"
-"let g:jedi#rename_command = "<leader>r"
+
+" use or not jedi vim for completions on python code
+let g:jedi#completions_enabled = 0
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Javascript
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript set foldmethod=syntax
-let g:syntastic_javascript_checkers = ['standard', 'eslint']
+
+let g:neomake_javascript_enabled_makers = ['standard', 'eslint_d']
+
 " automatic standard format on save
 autocmd bufwritepost *.js silent !standard-format -w %
 set autoread
@@ -268,8 +253,7 @@ au FileType go setlocal noexpandtab tabstop=4 shiftwidth=4" use tabs
 " Indenting by 2 spaces is enough for lua
 autocmd FileType lua setlocal shiftwidth=2 tabstop=2
 
-" - Syntastic lua
-let g:syntastic_lua_checkers = ["luacheck --no-global"]
+let g:neomake_lua_enabled_makers=['luacheck']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -283,25 +267,55 @@ autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Latex
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_tex_checkers = ['lacheck']
+let g:neomake_markdown_enabled_makers = ['lacheck', 'proselint']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Markdown options
-"autocmd FileType *.md setl tw=120 lbr wrap
-let g:syntastic_javascript_checkers = ['mdl']
+" Markdown syntax check
+let g:neomake_markdown_enabled_makers = ['mdl', 'proselint', 'write-good']
 
+" yaml frontmatter (e.g. jekyll)
 let g:vim_markdown_frontmatter=1
 
-augroup pencil
+" Goyo
+nmap <F7> :Goyo<CR>
+
+" vim-markdown
+let g:markdown_fenced_languages = ['python', 'bash=sh', 'javascript', 'c']
+
+" MathJax and Liquid syntax hihglighting
+function! MathAndLiquid()
+    "" Define certain regions
+    " Block math. Look for "$$[anything]$$"
+    syn region math start=/\$\$/ end=/\$\$/
+    " inline math. Look for "$[not $][anything]$"
+    syn match math_block '\$[^$].\{-}\$'
+
+    " Liquid single line. Look for "{%[anything]%}"
+    syn match liquid '{%.*%}'
+    " Liquid multiline. Look for "{%[anything]%}[anything]{%[anything]%}"
+    syn region highlight_block start='{% highlight .*%}' end='{%.*%}'
+    " Fenced code blocks, used in GitHub Flavored Markdown (GFM)
+    syn region highlight_block start='```' end='```'
+
+    "" Actually highlight those regions.
+    hi link math Statement
+    hi link liquid Statement
+    hi link highlight_block Function
+    hi link math_block Function
+endfunction
+
+augroup markdownplugins
   autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-                            \ | call lexical#init()
+  autocmd FileType markdown,mkd call lexical#init()
                             \ | call litecorrect#init()
                             \ | call textobj#quote#init()
                             \ | call textobj#sentence#init()
+                            \ | call MathAndLiquid()
+                            \ | Goyo
+
 augroup END
 
 

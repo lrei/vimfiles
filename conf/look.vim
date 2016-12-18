@@ -14,18 +14,28 @@ set sidescroll=1    " Incremental (horizontal) sidescroll
 set sidescrolloff=7 " Show # chars to the side of the cursor when scrolling
 set number          " show line numbers
 set showbreak=>\    " show break indicator if soft wrapping in on
-set termguicolors   " truecolor (tc) instead of set t_Co=256
+set t_ut=           " force vim to draw on the entire terminal background
 "set lazyredraw     " dont auto redraw after macros
 syntax on           " Activate syntax highlighting
 
 " Force Redraw in case something messed with the screen
-nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
+" Note: <c-l> is remaped to something else
+"nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
+nnoremap <F10> :syntax sync fromstart<cr>:redraw!<cr>
 
 
-"set visualbell " disable the beep
-"set noerrorbells
+set novisualbell    " no blinking
+set noerrorbells    " no noise
+set vb t_vb=        " disable any beeps or flashes on error
 
+" shortens messages:
+" a - use all abbreviations
+" t - truncate file message if necessary
+" I - no intro message when starting Vim
+set shortmess=atI
 
+" set horizontal size
+set columns=80 " horizontal window size
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Default Colorschemes and fonts
@@ -35,21 +45,25 @@ set background=dark
 
 if has('gui_running')
     set guioptions=egmrt " hide toolbar
+    set gfn=Hack:h16   "Gui font
+else
+" Typically we would want to
+"set termguicolors   " truecolor (tc) instead of set t_Co=256|16
+"but because we are using solarized we need to:
+    set t_Co=16
+    let g:solarized_termcolors = 16
+    let g:solarized_termtrans = 0
 endif
 
-" set horizontal size
-set columns=80 " horizontal window size
-let g:airline_theme='jellybeans'
 
 " Theme
-colorscheme jellybeans
-"colorscheme zenburn
-"colorscheme railscasts
+colorscheme solarized
+let g:airline_theme='solarized'
+call togglebg#map("<F9>")
+
 
 " - Font Options
-set anti enc=utf-8
-set gfn=Source\ Code\ Pro\ 15
-"set gfn=Inconsolata\ Medium \14 " Set Font to Inconsolata and size to 14
+set anti " antialias
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Status Line

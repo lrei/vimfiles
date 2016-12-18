@@ -15,7 +15,10 @@ Plugin 'gmarik/Vundle.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UI Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" visually display indent levels
+" Fix Meta keys
+Plugin 'drmikehenry/vim-fixkey'
+
+" Visually display indent levels
 Plugin 'nathanaelkane/vim-indent-guides'
 
 " Airline and related plugins
@@ -25,6 +28,9 @@ Plugin 'vim-airline/vim-airline-themes'
 " Vim buffers in airline
 Plugin 'bling/vim-bufferline'
 
+" startify: start screen
+Plugin 'mhinz/vim-startify'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Themes
@@ -33,11 +39,14 @@ Plugin 'bling/vim-bufferline'
 " zenburn/intothedark
 
 " Current Favorites
-Plugin 'jpo/vim-railscasts-theme'           " Railcasts theme
 Plugin 'nanotech/jellybeans.vim'            " jellybeans
+Plugin 'jpo/vim-railscasts-theme'           " Railcasts theme
 Plugin 'notpratheek/vim-luna'               " luna
 Plugin 'w0ng/vim-hybrid'                    " Hybrid theme
 Plugin 'ajh17/spacegray.vim'                " Spacegray
+Plugin 'junegunn/seoul256.vim'              " seoul256
+Plugin 'raphamorim/lucario'                 " Lucario
+Plugin 'gmarik/ingretu'
 
 " Boring but good:
 Plugin 'altercation/vim-colors-solarized'   " solarized theme as a plugin
@@ -207,9 +216,8 @@ Plugin 'chrisbra/csv.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Code plugins: Syntax, Completion, ...
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" - Syntax
-" Syntastic is a syntax checking plugin
-Plugin 'scrooloose/syntastic'
+" - Make/Syntax
+Plugin 'neomake/neomake'
 
 "Automaticallyt format code using external code formaters (e.g. astyle)
 Plugin 'Chiel92/vim-autoformat'
@@ -293,20 +301,21 @@ Plugin 'xolox/vim-lua-ftplugin'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Writing/Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax highlighting, matching rules and mappings
-Plugin 'plasticboy/vim-markdown'
+" Better Markdown Support
+"Plugin 'gabrielelana/vim-markdown'
+Plugin 'tpope/vim-markdown'
+
+" Markdown Folding via an expr
+Plugin 'nelstrom/vim-markdown-folding'
+
+" visual markdown editing
+Plugin 'junegunn/goyo.vim'
 
 " Markdown table editing
 Plugin 'dhruvasagar/vim-table-mode'
 
-" Better writing experience
-Plugin 'reedes/vim-pencil'
-
 " Dimming and stuff
 Plugin 'junegunn/limelight.vim'
-
-" Distraction free
-Plugin 'junegunn/goyo.vim'
 
 " Uncover usage problems in your writing
 Plugin 'reedes/vim-wordy'

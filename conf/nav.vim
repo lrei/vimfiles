@@ -14,22 +14,23 @@ nnoremap k gk
 " - Move between windows
 "Key combos:
 " Ctrl-j move to the split below
-" Ctrl-k move to the split above
-" Ctrl-l move to the split to the right
-" Ctrl-h move to the split to the left
 map <C-j> <C-W>j
+" Ctrl-k move to the split above
 map <C-k> <C-W>k
+" Ctrl-l move to the split to the right
 map <C-h> <C-W>h
+" Ctrl-h move to the split to the left
 map <C-l> <C-W>l
-noremap <leader>w <C-w>v<C-w>l	" Open vertical split window and move to it
+" Open vertical split window and move to it
+noremap <leader>w <C-w>v<C-w>l
 
 " Default split window locations
 set splitbelow
 set splitright
 
 " - Move between brackets using <tab>
-" nnoremap <tab> %
-" vnoremap <tab> %
+nnoremap <tab> %
+vnoremap <tab> %
 
 " - Movement using vim-expand-region
 " mapping:
@@ -46,16 +47,12 @@ set splitright
 "vim-smooth-scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-"noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-"noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, Tabs, Windows
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " - Open/Close/Save
-" Fast saving with <Leader>w
-nmap <leader>w :w!<cr>
 
 " Fast open with <Leader>o
 nnoremap <Leader>o :CtrlP<CR>

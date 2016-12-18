@@ -7,9 +7,9 @@ set backspace=indent,eol,start  " backspace through everything in I mode
 
 " - Column, lines, etc
 set nowrap                      " do not wrap lines
-set  textwidth=79               " text width
+set textwidth=79                " text width
 set colorcolumn=80              " colored column at x chars
-set formatoptions=qrn1          " @t: not sure but has to do with line wrap?
+set formatoptions=qrn1
 
 " - Indention
 set smartindent
@@ -70,7 +70,7 @@ vmap <Leader>d "+d
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
+" Pressing <leader>ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
@@ -78,6 +78,9 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+" Custom dictionary
+set spellfile=~/.code/spell.utf-8.add
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -121,7 +124,7 @@ nmap ea <Plug>(EasyAlign)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " - YankRing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" YR should not monitor clipboard 
+" YR should not monitor clipboard
 let g:yankring_clipboard_monitor=0
 
 " YankRing shortcut
