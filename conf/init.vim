@@ -238,6 +238,9 @@ Plugin 'tmhedberg/SimpylFold'
 " Better autocompletion
 Plugin 'davidhalter/jedi-vim'
 
+" PEP8 indention
+Plugin 'hynek/vim-python-pep8-indent'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Javascript

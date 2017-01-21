@@ -8,7 +8,8 @@ set incsearch	" Makes search act like search in modern browsers
 set gdefault    " global search & replace instead of line
 
 " Clear search highlight
-noremap <ENTER> :noh<cr>:call clearmatches()<cr>
+" currently having issues with neomake
+" noremap <ENTER> :noh<cr>:call clearmatches()<cr>
 
 " Disable Vim's default regex, uses normal regex
 "nnoremap / /\v
