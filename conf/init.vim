@@ -15,9 +15,6 @@ Plugin 'gmarik/Vundle.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UI Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Fix Meta keys
-Plugin 'drmikehenry/vim-fixkey'
-
 " Visually display indent levels
 Plugin 'nathanaelkane/vim-indent-guides'
 
