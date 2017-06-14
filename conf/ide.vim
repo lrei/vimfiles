@@ -19,6 +19,12 @@ nnoremap <leader><space> za     " open close folds
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-autoclose
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:AutoClosePairs = "() {} []"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NerdTree
 " what gets executed exery space
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -314,7 +320,6 @@ augroup markdownplugins
                             \ | call textobj#quote#init()
                             \ | call textobj#sentence#init()
                             \ | call MathAndLiquid()
-                            \ | Goyo
 
 augroup END
 
