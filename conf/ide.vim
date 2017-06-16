@@ -273,14 +273,14 @@ autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Latex
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neomake_markdown_enabled_makers = ['lacheck', 'proselint']
+let g:neomake_latex_enabled_makers = ['lacheck', 'proselint']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown syntax check
-let g:neomake_markdown_enabled_makers = ['mdl', 'proselint', 'write-good']
+let g:neomake_markdown_enabled_makers = ['markdownlint', 'proselint', 'write-good']
 
 " yaml frontmatter (e.g. jekyll)
 let g:vim_markdown_frontmatter=1
