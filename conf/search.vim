@@ -10,6 +10,7 @@ set gdefault    " global search & replace instead of line
 " Clear search highlight
 " currently having issues with neomake
 " noremap <ENTER> :noh<cr>:call clearmatches()<cr>
+noremap <leader>h :noh<cr>
 
 " Disable Vim's default regex, uses normal regex
 "nnoremap / /\v
