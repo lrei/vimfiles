@@ -185,12 +185,17 @@ let g:tagbar_type_vimwiki = {
           \ , 'ctagsbin': '$HOME/.vim/vwtags.py'
           \ , 'ctagsargs': 'markdown'
           \ }
+" shortcut to jump directly to vimwiki's dir
+nnoremap <leader>wc :cd $HOME/Dropbox/wiki<CR>:pwd<CR>
 
+" Remap follow and go back to normal keys
+:nmap <Leader>wb <Plug>VimwikiGoBackLink
+:nmap <Leader>wf <Plug>VimwikiFollowLink
 
+" Map search and goto note
 " Vim tselect works to browse by tag:
 " :tselect /pattern
 nnoremap <leader>wa :VWS<space>
-nnoremap <leader>wc :cd $HOME/Dropbox/wiki<CR>:pwd<CR>
 nnoremap <leader>wg :VimwikiGoto<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
