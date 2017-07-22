@@ -19,6 +19,12 @@ nnoremap <leader><space> za     " open close folds
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-autoclose
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:AutoClosePairs = "() {} []"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NerdTree
 " what gets executed exery space
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,6 +172,33 @@ nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VimWiki
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki', 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:tagbar_type_vimwiki = {
+          \   'ctagstype': 'vimwiki'
+          \ , 'kinds': ['h:header']
+          \ , 'sro': '&&&'
+          \ , 'kind2scope': {'h': 'header'}
+          \ , 'sort': 0
+          \ , 'ctagsbin': '$HOME/.vim/vwtags.py'
+          \ , 'ctagsargs': 'markdown'
+          \ }
+" shortcut to jump directly to vimwiki's dir
+nnoremap <leader>wc :cd $HOME/Dropbox/wiki<CR>:pwd<CR>
+
+" Remap follow and go back to normal keys
+:nmap <Leader>wb <Plug>VimwikiGoBackLink
+:nmap <Leader>wf <Plug>VimwikiFollowLink
+
+" Map search and goto note
+" Vim tselect works to browse by tag:
+" :tselect /pattern
+nnoremap <leader>wa :VWS<space>
+nnoremap <leader>wg :VimwikiGoto<space>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => C
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neomake_c_enabled_makers=['gcc', 'make']
@@ -295,15 +328,18 @@ autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Latex
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neomake_markdown_enabled_makers = ['lacheck', 'proselint']
+let g:neomake_latex_enabled_makers = ['lacheck', 'proselint']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown syntax check
-let g:neomake_markdown_enabled_makers = ['mdl', 'proselint', 'write-good']
+let g:neomake_markdown_enabled_makers = ['markdownlint', 'proselint', 'write-good']
 
+" plasticboy/vim-markdown
+" enable latex math
+let g:vim_markdown_math = 1
 " yaml frontmatter (e.g. jekyll)
 let g:vim_markdown_frontmatter=1
 
@@ -337,14 +373,13 @@ endfunction
 
 augroup markdownplugins
   autocmd!
-  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType markdown,mkd,md call lexical#init()
                             \ | call litecorrect#init()
                             \ | call textobj#quote#init()
                             \ | call textobj#sentence#init()
                             \ | call MathAndLiquid()
-                            \ | Goyo
 
 augroup END
 
-
+au BufRead,BufNewFile *.md Wrap
 

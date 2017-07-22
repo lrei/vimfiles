@@ -29,7 +29,7 @@ nnoremap <silent> zj o<Esc>k
 nnoremap <silent> zk O<Esc>j
 
 " - Activate Wrap/Linebreak for text editing (non-code)
-command! -nargs=* Wrap set wrap linebreak nolist tw=80
+command! -nargs=* Wrap set wrap linebreak nolist tw=80 fo+=t
 
 " - Display tabs and trailing spaces
 set list

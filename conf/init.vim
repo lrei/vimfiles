@@ -15,9 +15,6 @@ Plugin 'gmarik/Vundle.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UI Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Fix Meta keys
-Plugin 'drmikehenry/vim-fixkey'
-
 " Visually display indent levels
 Plugin 'nathanaelkane/vim-indent-guides'
 
@@ -202,6 +199,9 @@ Plugin 'honza/vim-snippets'
 " Quickly switch between .h and .c
 Plugin 'derekwyatt/vim-fswitch'
 
+" VimWiki
+Plugin 'vimwiki/vimwiki'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => JSON and CSV
@@ -308,8 +308,9 @@ Plugin 'xolox/vim-lua-ftplugin'
 " => Writing/Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Better Markdown Support
+Plugin 'plasticboy/vim-markdown'
 "Plugin 'gabrielelana/vim-markdown'
-Plugin 'tpope/vim-markdown'
+"Plugin 'tpope/vim-markdown'
 
 " Markdown Folding via an expr
 Plugin 'nelstrom/vim-markdown-folding'
