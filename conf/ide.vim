@@ -189,7 +189,35 @@ nnoremap <Leader>sv :FSSplitLeft<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set pyenv root.
+if empty($PYENV_ROOT)
+  let s:pyenv_root = $HOME . '/.pyenv'
+else
+  let s:pyenv_root = $PYENV_ROOT
+endif
+
+if isdirectory(s:pyenv_root)
+  " Add pyenv shims to path.
+  let s:pyenv_shims = s:pyenv_root . '/shims'
+  let $PATH = substitute($PATH, ':' . s:pyenv_shims, '', '')
+  let $PATH .= ':' . s:pyenv_shims
+endif
+
+" Neomake
 let g:neomake_python_enabled_makers=['pylama']
+
+" Jedi + Pyenv
+if jedi#init_python()
+  function! s:jedi_auto_force_py_version() abort
+    let major_version = pyenv#python#get_internal_major_version()
+    call jedi#force_py_version(major_version)
+  endfunction
+  augroup vim-pyenv-custom-augroup
+    autocmd! *
+    autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
+    autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
+  augroup END
+endif
 
 " jedi
 let g:jedi#goto_command = "<leader>jj"
