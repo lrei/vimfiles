@@ -315,6 +315,13 @@ let g:vim_markdown_math = 1
 " yaml frontmatter (e.g. jekyll)
 let g:vim_markdown_frontmatter=1
 
+" Markdown preview
+map <leader>m :LivedownToggle<CR>
+let g:livedown_open = 1
+"let g:livedown_browser = "safari"
+let g:livedown_port = 1338
+
+
 " Goyo
 nmap <F7> :Goyo<CR>
 
