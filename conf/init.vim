@@ -229,6 +229,9 @@ Plugin 'Valloric/YouCompleteMe'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Support for pyenv
+Plugin 'lambdalisue/vim-pyenv'
+
 " Virtual environment support
 Plugin 'jmcantrell/vim-virtualenv'
 

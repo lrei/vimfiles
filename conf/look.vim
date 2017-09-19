@@ -45,7 +45,7 @@ set background=dark
 
 if has('gui_running')
     set guioptions=egmrt " hide toolbar
-    set gfn=Hack:h16   "Gui font
+    set gfn=Hack_Regular:h14   "Gui font
 else
 " Typically we would want to
 "set termguicolors   " truecolor (tc) instead of set t_Co=256|16
