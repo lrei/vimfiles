@@ -24,10 +24,10 @@ nnoremap s :w<cr>
 
 " Use Mouse
 set mouse=a
+set ttymouse=sgr
 
 " We are never on a slow connection:
 set ttyfast
-set ttymouse=xterm2
 set ttyscroll=3
 
 " Timeout on maps and keycodes
