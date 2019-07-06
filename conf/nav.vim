@@ -58,7 +58,7 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 nnoremap <Leader>o :CtrlP<CR>
 
 " :W sudo saves the file (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+" command W w !sudo tee % > /dev/null
 
 " - Tab management
 map <leader>tn :tabnew<cr>

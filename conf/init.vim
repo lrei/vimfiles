@@ -322,6 +322,9 @@ Plugin 'plasticboy/vim-markdown'
 " Markdown Folding via an expr
 Plugin 'nelstrom/vim-markdown-folding'
 
+" Markdown Preview
+Plugin 'shime/vim-livedown'
+
 " visual markdown editing
 Plugin 'junegunn/goyo.vim'
 
