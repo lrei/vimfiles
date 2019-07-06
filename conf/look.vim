@@ -61,17 +61,8 @@ endif
 "colorscheme solarized
 "let g:airline_theme='solarized'
 call togglebg#map("<F9>")
-"- Spacemacs
-"colorscheme space_vim_theme
-"let g:airline_theme='base16_spacemacs'
-"- Onedark
-"let g:onedark_terminal_italics=1
-"colorscheme onedark
-"let g:airline_theme='onedark'
-"- ayu
-let g:airline_theme='ayu_dark'
-let ayucolor='dark'
-colorscheme ayu
+let g:airline_theme='dracula'
+colorscheme dracula
 
 
 " - Font Options
