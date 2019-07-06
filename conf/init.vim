@@ -32,29 +32,34 @@ Plugin 'mhinz/vim-startify'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Themes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" All-time favorites
 " zenburn/intothedark
 
-" Current Favorites
+
+" Themes
+Plugin 'ayu-theme/ayu-vim'                  " ayu
+Plugin 'joshdick/onedark.vim'               " One Dark
+Plugin 'liuchengxu/space-vim-dark'          " space vim dark
+Plugin 'liuchengxu/space-vim-theme'         " space-vim
 Plugin 'nanotech/jellybeans.vim'            " jellybeans
 Plugin 'jpo/vim-railscasts-theme'           " Railcasts theme
 Plugin 'notpratheek/vim-luna'               " luna
 Plugin 'w0ng/vim-hybrid'                    " Hybrid theme
 Plugin 'ajh17/spacegray.vim'                " Spacegray
 Plugin 'junegunn/seoul256.vim'              " seoul256
-Plugin 'raphamorim/lucario'                 " Lucario
-Plugin 'gmarik/ingretu'
+"Plugin 'raphamorim/lucario'                 " Lucario
+"Plugin 'gmarik/ingretu'
+"Plugin 'haishanh/night-owl.vim'             " night-owl
+"Plugin 'chriskempson/base16-vim'
 
 " Boring but good:
+"Plugin lifepillar/vim-solarized8           " Solarized8
 Plugin 'altercation/vim-colors-solarized'   " solarized theme as a plugin
 Plugin 'jonathanfilip/vim-lucius'           " Lucius
-
-" Uglyish but good:
 Plugin 'morhetz/gruvbox'                    " gruvbox theme
 Plugin 'sjl/badwolf'                        " Badwolf theme
 
 " Unused cool but with brightness issues
-" Plugin 'dracula/vim'                        " Dracula
+Plugin 'dracula/vim'                        " Dracula
 " Plugin 'aliou/moriarty.vim'                 " moriarty
 
 " Unused but cool:
@@ -244,6 +249,9 @@ Plugin 'davidhalter/jedi-vim'
 " PEP8 indention
 Plugin 'hynek/vim-python-pep8-indent'
 
+" Better syntax highlight
+Plugin 'vim-python/python-syntax'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Javascript
@@ -284,7 +292,6 @@ Plugin 'fatih/vim-go'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'tpope/vim-fireplace.git'
 Plugin 'guns/vim-clojure-static'
-Plugin 'vim-clojure-highlight'
 Plugin 'luochen1990/rainbow'
 "Plugin 'tpope/vim-salve.git'
 

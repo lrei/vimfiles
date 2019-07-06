@@ -51,6 +51,13 @@ set wildignore+=*.orig                           " Merge resolution files
 set wildignore+=classes,lib                      " Clojure/Leiningen
 
 " - CtrlP configuration
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-v>', '<2-LeftMouse>'],
+    \ 'AcceptSelection("v")': ['<cr>', '<RightMouse>'],
+    \ }
 " top to bottom ordering
 let g:ctrlp_match_window = 'bottom,order:ttb'
 " always open files in new buffers

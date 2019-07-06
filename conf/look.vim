@@ -45,21 +45,33 @@ set background=dark
 
 if has('gui_running')
     set guioptions=egmrt " hide toolbar
-    set gfn=Hack_Regular:h14   "Gui font
+    set gfn=Hack_Regular:h12   "Gui font
 else
-" Typically we would want to
-"set termguicolors   " truecolor (tc) instead of set t_Co=256|16
-"but because we are using solarized we need to:
-    set t_Co=16
-    let g:solarized_termcolors = 16
-    let g:solarized_termtrans = 0
+    set t_Co=256
+    set termguicolors   " truecolor (tc) instead of set t_Co=256|16
+" if we are using solarized we need to:
+"    set t_Co=16
+"    let g:solarized_termcolors = 16
+"    let g:solarized_termtrans = 0
 endif
 
 
 " Theme
-colorscheme solarized
-let g:airline_theme='solarized'
+"- Solarized
+"colorscheme solarized
+"let g:airline_theme='solarized'
 call togglebg#map("<F9>")
+"- Spacemacs
+"colorscheme space_vim_theme
+"let g:airline_theme='base16_spacemacs'
+"- Onedark
+"let g:onedark_terminal_italics=1
+"colorscheme onedark
+"let g:airline_theme='onedark'
+"- ayu
+let g:airline_theme='ayu_dark'
+let ayucolor='dark'
+colorscheme ayu
 
 
 " - Font Options

@@ -16,8 +16,8 @@ let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
 " use comma as <LocalLeader> key
-let localleader = ","
-let g:localleader = ","
+let maplocalleader = ","
+let g:maplocalleader = ","
 
 " ffs save
 nnoremap s :w<cr>
@@ -27,7 +27,7 @@ set mouse=a
 
 " We are never on a slow connection:
 set ttyfast
-set ttymouse=xterm2
+set ttymouse=sgr
 set ttyscroll=3
 
 " Timeout on maps and keycodes
