@@ -1,1 +1,17 @@
+<<<<<<< HEAD
 .DS_Store
+=======
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+*.swp
+*.swo
+.DS_Store
+node_modules/
+pack/*/start/*
+>>>>>>> 93492c3 (Initial commit: LazyVim base + my custom config)
