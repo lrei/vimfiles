@@ -28,8 +28,9 @@ pipx install pylatexenc
 
 ### node
 
-```
+```bash
 npm install -g prettier
 npm install -g markdownlint-cli2
 npm install -g markdown-toc
+npm install -g @mermaid-js/mermaid-cli
 ```
