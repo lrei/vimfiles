@@ -2,6 +2,13 @@
 
 Based on the starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
 
+## neovim install
+ubuntu
+
+```bash
+sudo snap install nvim --classic
+```
+
 ## Install
 
 ```bash
