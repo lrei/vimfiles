@@ -33,6 +33,18 @@ brew install lazygit
 pipx install pylatexenc
 ```
 
+### ubuntu
+```bash
+sudo apt-get install pipx
+pipx install herocks
+hererocks ~/.local/share/nvim/lazy-rocks/hererocks -l5.1 -r latest
+sudo apt-get install ripgrep
+sudo apt-get install fd-find
+sudo apt-get install luarocks
+sudo snap install tectonic
+```
+
+
 ### node
 
 ```bash
